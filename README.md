@@ -1,8 +1,8 @@
-# [chanhdai.com](https://chanhdai.com)
+# [tarunpreetsingh.com](https://tarunpreetsingh.com)
 
-A minimal portfolio, component registry, and blog to showcase my work as a Design Engineer.
+A minimal portfolio and blog to showcase my work as a Software Developer and Data Scientist.
 
-Check out the live site: [chanhdai.com](https://chanhdai.com)
+Check out the live site: [tarunpreetsingh.com](https://tarunpreetsingh.com)
 
 <!-- <a href="https://frogdr.com/chanhdai.com?via=ncdai&utm_source=chanhdai.com">
   <picture>
@@ -18,11 +18,13 @@ Check out the live site: [chanhdai.com](https://chanhdai.com)
   <img src="https://assets.chanhdai.com/images/screenshot-desktop-light.webp?t=1758274686" alt="Screenshot">
 </picture>
 
-## GitAds Sponsored
+## 🙏 Special Thanks
 
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=ncdai/chanhdai.com@github)](https://gitads.dev/v1/ad-track?source=ncdai/chanhdai.com@github)
+This portfolio is built upon the amazing foundation created by **[Chang Dai (@ncdai)](https://github.com/ncdai)**.
 
-<!-- GitAds-Verify: QICCAB4PFWV9MHUGPGPN5B2I8SAXLAOK -->
+His original repository [chanhdai.com](https://github.com/ncdai/chanhdai.com) provided an exceptional starting point with clean architecture, beautiful design, and comprehensive features. Thank you Chang Dai for open-sourcing such high-quality code and making it available for the developer community! 🚀
+
+**Original Repository**: [github.com/ncdai/chanhdai.com](https://github.com/ncdai/chanhdai.com)
 
 ## Overview
 
@@ -50,16 +52,14 @@ Check out the live site: [chanhdai.com](https://chanhdai.com)
 - RSS Feed for easy content distribution
 - Dynamic OG Images for rich previews
 
-### Component Registry
+### Projects Showcase
 
-Easily build and distribute your own components, hooks, and pages using a custom registry powered by the [shadcn CLI](https://ui.shadcn.com/docs/cli).
+Highlighting my work in software development and data science:
 
-Each component is well-documented through the Blog, featuring:
-
-- **Live Preview**: Interactive component demos
-- **Code Snippets**: Readable and copyable examples
-- **Beautiful Code Blocks**: Styled for clarity and dark mode
-- **Command Blocks**: One-click copy for quick install commands (`pnpm`, `npm`, `yarn`, `bun`)
+- **FundFlow + FinBot**: Financial management application with AI chatbot
+- **House Price Prediction**: Machine learning model for real estate predictions
+- **Movie Sentiment Analysis**: NLP-powered sentiment classification system
+- **Spring Boot Applications**: Backend development and API design
 
 ## Development
 
@@ -71,11 +71,22 @@ Licensed under the [MIT license](./LICENSE).
 
 You're free to use my code! Just make sure to <ins>remove all my personal information</ins> before publishing your website. It's awesome to see my code being useful to someone!
 
-## Star History
+## About Me
 
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive)](https://starchart.cc/ncdai/chanhdai.com)
+I'm Tarunpreet Singh, a passionate Software Developer and Data Scientist from Punjab, India. I specialize in:
+
+- **Backend Development**: Java, Spring Boot, REST APIs
+- **Data Science**: Python, Machine Learning, NLP
+- **Financial Technology**: Building FinTech applications and AI assistants
+- **Problem Solving**: Algorithm design and system optimization
 
 ## Acknowledgments
+
+### 🌟 Original Creator
+
+- **[Chang Dai (@ncdai)](https://github.com/ncdai)** - For the incredible foundation and architecture of this portfolio template
+
+### 🛠️ Technologies & Libraries
 
 - [React](https://react.dev)
 - [Next.js](https://nextjs.org)
