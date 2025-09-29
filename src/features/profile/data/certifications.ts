@@ -4,8 +4,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Finance for Everyone",
     issuer: "McMaster University",
-    issuerLogoURL:
-      "https://drive.google.com/uc?id=1ueRZg6mfSuWCpJmkJx52z4TGgDSawT0W",
+    issuerIconName: "coursera",
     issueDate: "2024-11-14",
     credentialID: "",
     credentialURL:
@@ -14,8 +13,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Digital Transformation in Financial Services",
     issuer: "Copenhagen Business School",
-    issuerLogoURL:
-      "https://drive.google.com/uc?id=1ueRZg6mfSuWCpJmkJx52z4TGgDSawT0W",
+    issuerIconName: "coursera",
     issueDate: "2024-12-27",
     credentialID: "",
     credentialURL:
@@ -24,31 +22,27 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Data Science",
     issuer: "IIT Guwahati",
-    issuerLogoURL:
-      "https://drive.google.com/uc?id=1ueRZg6mfSuWCpJmkJx52z4TGgDSawT0W",
+    issuerIconName: "google",
     issueDate: "2025-12-26",
     credentialID: "",
-    credentialURL:
-      "",
+    credentialURL: "",
   },
   {
     title: "Amazon Solutions Architecture Job Simulation",
     issuer: "Amazon",
-    issuerLogoURL:
-      "https://drive.google.com/uc?id=1ueRZg6mfSuWCpJmkJx52z4TGgDSawT0W",
+    issuerIconName: "react",
     issueDate: "2024-12-31",
     credentialID: "",
     credentialURL:
       "https://drive.google.com/file/d/1-VrEPoToCqBYefGaJLuEOQWQ8kNawd-z/view?usp=drive_link",
-  },{
+  },
+  {
     title: "TATA Forage Virtual Internship",
     issuer: "TATA",
-    issuerLogoURL:
-      "https://drive.google.com/uc?id=1ueRZg6mfSuWCpJmkJx52z4TGgDSawT0W",
+    issuerIconName: "accenture",
     issueDate: "2024-12-31",
     credentialID: "",
     credentialURL:
       "https://drive.google.com/file/d/1wedTtYXSnYQRQxYoM0lvz-lqT7WB-Ao1/view?usp=drive_link",
   },
-  
 ];

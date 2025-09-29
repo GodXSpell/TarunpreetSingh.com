@@ -12,7 +12,6 @@ Check out the live site: [tarunpreetsingh.com](https://tarunpreetsingh.com)
   </picture>
 </a> -->
 
-
 ## 🙏 Special Thanks
 
 This portfolio is built upon the amazing foundation created by **[Chang Dai (@ncdai)](https://github.com/ncdai)**.

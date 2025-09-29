@@ -17,13 +17,22 @@ export function SiteFooter() {
           Built by{" "}
           <a
             className="link"
-            href="https://x.com/iamncdai"
+            href="https://www.linkedin.com/in/tarunpreet-singh-77b12b333/"
             target="_blank"
             rel="noopener"
           >
-            ncdai
+            Tarunpreet Singh
           </a>
-          . The source code is available on{" "}
+          . Based on{" "}
+          <a
+            className="link"
+            href="https://github.com/ncdai/chanhdai.com"
+            target="_blank"
+            rel="noopener"
+          >
+            ncdai&apos;s template
+          </a>
+          . Source code on{" "}
           <a
             className="link"
             href={SOURCE_CODE_GITHUB_URL}
