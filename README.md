@@ -12,11 +12,6 @@ Check out the live site: [tarunpreetsingh.com](https://tarunpreetsingh.com)
   </picture>
 </a> -->
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?t=1758274686">
-  <source media="(prefers-color-scheme: light)" srcset="https://assets.chanhdai.com/images/screenshot-desktop-light.webp?t=1758274686">
-  <img src="https://assets.chanhdai.com/images/screenshot-desktop-light.webp?t=1758274686" alt="Screenshot">
-</picture>
 
 ## 🙏 Special Thanks
 
