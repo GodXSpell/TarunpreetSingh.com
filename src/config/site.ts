@@ -3,7 +3,7 @@ import type { NavItem } from "@/types/nav";
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: process.env.APP_URL || "https://chanhdai.com",
+  url: process.env.APP_URL || "https://tarunpreetsingh.com",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -16,24 +16,28 @@ export const META_THEME_COLORS = {
 
 export const MAIN_NAV: NavItem[] = [
   {
-    title: "Daifolio",
+    title: "Portfolio",
     href: "/",
   },
   {
     title: "Blog",
     href: "/blog",
   },
+  // {
+  //   title: "Components",
+  //   href: "/components",
+  // },
   {
-    title: "Components",
-    href: "/components",
+    title: "Resume",
+    href: "/resume",
   },
 ];
 
-export const SOURCE_CODE_GITHUB_REPO = "ncdai/chanhdai.com";
-export const SOURCE_CODE_GITHUB_URL = "https://github.com/ncdai/chanhdai.com";
+export const SOURCE_CODE_GITHUB_REPO = "GodXSpell/TarunpreetSingh.com";
+export const SOURCE_CODE_GITHUB_URL = "https://github.com/GodXSpell/TarunpreetSingh.com";
 
 export const UTM_PARAMS = {
-  utm_source: "chanhdai.com",
+  utm_source: "tarunpreetsingh.com",
   utm_medium: "portfolio_website",
   utm_campaign: "referral",
 };

@@ -20,18 +20,32 @@ export function ProfileHeader() {
           />
         </div>
 
-        <SimpleTooltip content="I'm from Việt Nam">
-          {/* Flag of Viet Nam */}
+        <SimpleTooltip content="I'm from India">
+          {/* Flag of India */}
           <svg
             className="absolute top-0 -left-px h-8 sm:h-9"
             viewBox="0 0 30 20"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <rect width="30" height="20" fill="#F00" />
-            <polygon
-              points="15,4 11.47,14.85 20.71,8.15 9.29,8.15 18.53,14.85"
-              fill="#FFEB00"
-            />
+            {/* Saffron stripe */}
+            <rect width="30" height="6.67" fill="#FF9933" />
+            {/* White stripe */}
+            <rect y="6.67" width="30" height="6.67" fill="#FFFFFF" />
+            {/* Green stripe */}
+            <rect y="13.33" width="30" height="6.67" fill="#138808" />
+            {/* Ashoka Chakra - simplified version */}
+            <circle cx="15" cy="10" r="2.5" fill="none" stroke="#000080" strokeWidth="0.4" />
+            {/* 24 spokes - using pre-calculated paths */}
+            <g stroke="#000080" strokeWidth="0.25" fill="none">
+              <line x1="15" y1="7.5" x2="15" y2="12.5" />
+              <line x1="16.77" y1="7.83" x2="13.23" y2="12.17" />
+              <line x1="17.17" y1="8.23" x2="12.83" y2="11.77" />
+              <line x1="17.5" y1="10" x2="12.5" y2="10" />
+              <line x1="17.17" y1="11.77" x2="12.83" y2="8.23" />
+              <line x1="16.77" y1="12.17" x2="13.23" y2="7.83" />
+              <line x1="15" y1="12.5" x2="15" y2="7.5" />
+              <line x1="13.23" y1="12.17" x2="16.77" y2="7.83" />
+            </g>
           </svg>
         </SimpleTooltip>
       </div>

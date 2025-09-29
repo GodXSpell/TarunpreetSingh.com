@@ -2,39 +2,26 @@ import type { SocialLink } from "../types/social-links";
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/linkedin.webp",
-    title: "LinkedIn",
-    description: "ncdai",
-    href: "https://linkedin.com/in/ncdai",
-  },
-  {
     icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/github.webp",
     title: "GitHub",
-    description: "ncdai",
-    href: "https://github.com/ncdai",
+    description: "GodXSpell",
+    href: "https://github.com/GodXSpell",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/x.webp",
-    title: "X (Formerly Twitter)",
-    description: "@iamncdai",
-    href: "https://x.com/iamncdai",
+    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/linkedin.webp",
+    title: "LinkedIn",
+    description: "Tarunpreet Singh",
+    href: "https://www.linkedin.com/in/tarunpreet-singh-77b12b333/",
   },
+  // Add more social links as needed
+  // Example:
+  /*
+  
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/dailydotdev.webp",
-    title: "daily.dev",
-    description: "@ncdai",
-    href: "https://app.daily.dev/ncdai",
+    icon: "twitter",
+    title: "Twitter",
+    description: "@your-handle",
+    href: "https://twitter.com/your-handle",
   },
-  {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/zalo.webp",
-    title: "Zalo",
-    description: "Quaric",
-    href: "https://zalo.me/2353934240045322830",
-  },
-  {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/youtube.webp",
-    title: "YouTube",
-    description: "@ncdai",
-    href: "https://www.youtube.com/@ncdai",
-  },
+  */
 ];

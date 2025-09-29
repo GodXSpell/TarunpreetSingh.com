@@ -3,41 +3,41 @@
 import { useCommandState } from "cmdk";
 import type { LucideProps } from "lucide-react";
 import {
-  BriefcaseBusinessIcon,
-  CircleUserIcon,
-  CornerDownLeftIcon,
-  DownloadIcon,
-  LetterTextIcon,
-  MoonStarIcon,
-  RssIcon,
-  SunIcon,
-  TextIcon,
-  TriangleDashedIcon,
-  TypeIcon,
+    BriefcaseBusinessIcon,
+    CircleUserIcon,
+    CornerDownLeftIcon,
+    DownloadIcon,
+    LetterTextIcon,
+    MoonStarIcon,
+    RssIcon,
+    SunIcon,
+    TextIcon,
+    TriangleDashedIcon,
+    TypeIcon,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
+    CommandDialog,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+    CommandSeparator,
 } from "@/components/ui/command";
 import type { Post } from "@/features/blog/types/post";
 import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
 import { cn } from "@/lib/utils";
 import { copyText } from "@/utils/copy";
 
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark";
-import { getWordmarkSVG } from "./chanhdai-wordmark";
 import { Icons } from "./icons";
+import { TarunpreetSinghMark, getMarkSVG } from "./tarunpreet-singh-mark";
+import { getWordmarkSVG } from "./tarunpreet-singh-wordmark";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
@@ -55,7 +55,7 @@ const MENU_LINKS: CommandLinkItem[] = [
   {
     title: "Daifolio",
     href: "/",
-    icon: ChanhDaiMark,
+    icon: TarunpreetSinghMark,
   },
   {
     title: "Blog",
@@ -280,7 +280,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
                 );
               }}
             >
-              <ChanhDaiMark />
+              <TarunpreetSinghMark />
               Copy Mark as SVG
             </CommandItem>
 
@@ -441,7 +441,7 @@ function CommandMenuFooter() {
       <div className="flex h-10" />
 
       <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 border-t bg-zinc-100/30 px-4 text-xs font-medium dark:bg-zinc-800/30">
-        <ChanhDaiMark className="size-6 text-muted-foreground" aria-hidden />
+        <TarunpreetSinghMark className="size-6 text-muted-foreground" aria-hidden />
 
         <div className="flex shrink-0 items-center gap-2">
           <span>{ENTER_ACTION_LABELS[selectedCommandKind]}</span>

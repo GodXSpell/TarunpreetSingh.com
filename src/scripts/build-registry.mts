@@ -5,7 +5,7 @@ import { rimraf } from "rimraf";
 import { type Registry, registrySchema } from "shadcn/schema";
 
 import { registryConfig } from "../config/registry";
-import { registry } from "../registry";
+import { registry } from "../registry/";
 
 const REGISTRY_PATH = path.join(process.cwd(), "src/__registry__");
 const PUBLIC_REGISTRY_PATH = path.join(process.cwd(), "public/r");
@@ -58,8 +58,8 @@ export const Index: Record<string, any> = {`;
   let registryJSON = JSON.stringify(
     {
       $schema: "https://ui.shadcn.com/schema/registry.json",
-      name: "ncdai",
-      homepage: "https://chanhdai.com/components",
+      name: "GodXSpell",
+      homepage: "https://tarunpreetsingh.com/components",
       items: registry.items
         .filter((item) => item.type !== "registry:example")
         .map((item) => {

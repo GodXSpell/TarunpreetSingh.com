@@ -3,30 +3,19 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
-  allowedDevOrigins: ["chanhdai-macbook.local"],
+  allowedDevOrigins: ["tarunpreet-laptop.local"], // Update with your machine name if needed
   devIndicators: false,
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "assets.chanhdai.com",
+        hostname: "github.com", // For GitHub assets like avatar
         port: "",
       },
     ],
     qualities: [75, 100],
   },
-  async rewrites() {
-    return [
-      {
-        source: "/blog/:slug.mdx",
-        destination: "/blog.mdx/:slug",
-      },
-      {
-        source: "/components/:slug.mdx",
-        destination: "/blog.mdx/:slug",
-      },
-    ];
-  },
+  // Removed rewrites since we don't have blog or components pages
   // async headers() {
   //   return [
   //     {

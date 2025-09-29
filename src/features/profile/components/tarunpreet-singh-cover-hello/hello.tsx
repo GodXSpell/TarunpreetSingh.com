@@ -4,10 +4,10 @@ import { RepeatIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useState } from "react";
 
+import { NamasteGreetingEffect } from "@/components/namaste-greeting";
 import { TarunpreetSinghMark } from "@/components/tarunpreet-singh-mark";
 import { Button } from "@/components/ui/button";
 import { SimpleTooltip } from "@/components/ui/tooltip";
-import { AppleHelloVietnameseEffect } from "@/registry/apple-hello-effect";
 
 const layers = ["namaste", "tarunpreet-singh-wordmark"] as const;
 
@@ -39,9 +39,8 @@ export function Hello() {
           className="flex items-center justify-center text-black dark:text-white"
         >
           {layers[currentIndex] === "namaste" && (
-            <AppleHelloVietnameseEffect
+            <NamasteGreetingEffect
               className="h-10 sm:h-16"
-              exit={{ opacity: 0, scale: 0.8 }}
               onAnimationComplete={nextAnimation}
             />
           )}
