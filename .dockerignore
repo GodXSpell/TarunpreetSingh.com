@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Environment files
+.env*
+!.env.example
+
+# Next.js
+.next
+out
+build
+
+# Development
+.DS_Store
+*.log
+
+# Testing
+coverage
+
+# Vercel
+.vercel
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Misc
+README.md
+*.md
+!LICENSE

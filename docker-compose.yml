@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  tarunpreetsingh-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - APP_URL=https://tarunpreetsingh.com
+      - REGISTRY_URL=https://tarunpreetsingh.com/r
+      - NEXT_PUBLIC_DMCA_URL=https://www.dmca.com/ProtectionPro.aspx
+      # Add your GitHub token if needed
+      # - GITHUB_API_TOKEN=your_github_token_here
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

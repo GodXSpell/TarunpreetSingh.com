@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   transpilePackages: ["next-mdx-remote"],
   allowedDevOrigins: ["tarunpreet-laptop.local"], // Update with your machine name if needed
   devIndicators: false,
+  output: "standalone", // Enable standalone output for Docker
   images: {
     remotePatterns: [
       {

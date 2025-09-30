@@ -36,6 +36,10 @@
     "generate-libphonenumber-metadata": "libphonenumber-metadata-generator ./src/assets/libphonenumber.metadata.json --countries IN --extended",
     "upgrade:next": "npx @next/codemod@latest upgrade latest",
     "upgrade:tailwind": "npx @tailwindcss/upgrade@latest",
+    "docker:build": "docker build -t tarunpreetsingh-portfolio .",
+    "docker:run": "docker run -p 3000:3000 tarunpreetsingh-portfolio",
+    "docker:dev": "docker-compose up --build",
+    "docker:prod": "docker-compose -f docker-compose.yml up --build -d",
     "prepare": "husky"
   },
   "dependencies": {

@@ -1,13 +1,13 @@
 "use client";
 
 import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react";
-import { useTheme } from "next-themes";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import { toast } from "sonner";
 
 import { copyText } from "@/utils/copy";
 
-import { TarunpreetSinghMark, getMarkSVG } from "./tarunpreet-singh-mark";
+import { getMarkSVG, TarunpreetSinghMark } from "./tarunpreet-singh-mark";
 import { getWordmarkSVG } from "./tarunpreet-singh-wordmark";
 import {
   ContextMenu,
@@ -49,14 +49,18 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
         </ContextMenuItem>
 
         <ContextMenuItem asChild>
-          <Link href="#"> {/* Update with your brand guidelines link when available */}
+          <Link href="#">
+            {" "}
+            {/* Update with your brand guidelines link when available */}
             <TriangleDashedIcon />
             Brand Guidelines
           </Link>
         </ContextMenuItem>
 
         <ContextMenuItem asChild>
-          <a href="#" download> {/* Update with your brand assets when available */}
+          <a href="#" download>
+            {" "}
+            {/* Update with your brand assets when available */}
             <DownloadIcon />
             Download Brand Assets
           </a>

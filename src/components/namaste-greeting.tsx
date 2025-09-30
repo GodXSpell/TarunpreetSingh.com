@@ -11,13 +11,16 @@ type Props = React.ComponentProps<typeof motion.div> & {
 
 export function NamasteGreetingEffect({
   className,
-  speed = 1,
+  speed: _speed = 1, // Prefixed with underscore to indicate intentionally unused
   onAnimationComplete,
   ...props
 }: Props) {
   return (
     <motion.div
-      className={cn("flex items-center justify-center h-20 text-4xl font-bold", className)}
+      className={cn(
+        "flex h-20 items-center justify-center text-4xl font-bold",
+        className
+      )}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
