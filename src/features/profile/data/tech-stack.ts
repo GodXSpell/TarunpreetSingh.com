@@ -20,9 +20,9 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Language"],
   },
   {
-    key: "icons8-spring-boot",
+    key: "Spring-Boot",
     title: "Spring Boot",
-    href: "https://drive.google.com/file/d/1aXSsfAl_vfJpZbpo7TmvXR5yBEpipdmK/view?usp=drive_link",
+    href: "https://spring.io/projects/spring-boot",
     categories: ["Framework", "Backend Framework"],
   },
   {
@@ -93,19 +93,19 @@ export const TECH_STACK: TechStack[] = [
     href: "https://www.figma.com/",
     categories: ["Tools", "Design"],
   },
-  {
-    key: "ps",
-    title: "Adobe Photoshop",
-    href: "https://www.adobe.com/vn_en/products/photoshop.html",
-    categories: ["Tools", "Design"],
-  },
-  {
-    key: "chatgpt",
-    title: "ChatGPT",
-    href: "https://chatgpt.com/",
-    categories: ["Tools", "AI"],
-    theme: true,
-  },
+  // {
+  //   key: "ps",
+  //   title: "Adobe Photoshop",
+  //   href: "https://www.adobe.com/vn_en/products/photoshop.html",
+  //   categories: ["Tools", "Design"],
+  // },
+  // {
+  //   key: "chatgpt",
+  //   title: "ChatGPT",
+  //   href: "https://chatgpt.com/",
+  //   categories: ["Tools", "AI"],
+  //   theme: true,
+  // },
   // {
   //   key: "zalo-mini-app",
   //   title: "Zalo Mini App",

@@ -22,7 +22,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Data Science",
     issuer: "IIT Guwahati",
-    issuerIconName: "google",
+    issuerIconName: "Certificate",
     issueDate: "2025-12-26",
     credentialID: "",
     credentialURL: "",
@@ -30,7 +30,7 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Amazon Solutions Architecture Job Simulation",
     issuer: "Amazon",
-    issuerIconName: "react",
+    issuerIconName: "Certificate",
     issueDate: "2024-12-31",
     credentialID: "",
     credentialURL:
@@ -39,10 +39,19 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "TATA Forage Virtual Internship",
     issuer: "TATA",
-    issuerIconName: "accenture",
+    issuerIconName: "Certificate",
     issueDate: "2024-12-31",
     credentialID: "",
     credentialURL:
       "https://drive.google.com/file/d/1wedTtYXSnYQRQxYoM0lvz-lqT7WB-Ao1/view?usp=drive_link",
+  },
+  {
+    title: "Introduction to Docker and Kubernetes",
+    issuer: "nasscom Foundation",
+    issuerIconName: "Certificate",
+    issueDate: "2025-09-30",
+    credentialID: "",
+    credentialURL:
+      "https://drive.google.com/file/d/1bcssjXCJY5Ki448GBO4SGYhmaANpwX4m/view?usp=sharing",
   },
 ];
