@@ -120,9 +120,10 @@ export default function Page() {
         </div>
         <div className="mx-auto w-full max-w-4xl">
           <iframe
-            src="https://drive.google.com/file/d/1QwTCJSI709YPVUH9W0VcvLQuWAmAS8ww/view?usp=sharing"
-            className="h-96 w-full rounded-lg border border-edge bg-white"
+            src="https://drive.google.com/file/d/1QwTCJSI709YPVUH9W0VcvLQuWAmAS8ww/preview"
+            className="h-[600] w-full rounded-lg border border-edge bg-white"
             title="Resume Preview"
+            allow="autoplay"
           />
         </div>
       </div>
