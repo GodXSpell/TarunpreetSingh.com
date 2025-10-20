@@ -13,23 +13,26 @@ export const USER: User = {
     "Software Developer",
     "Problem Solver",
     "Data Scientist",
+    "Curious Mind",
   ],
   address: "Punjab, India",
   phoneNumber: "KzkxNjI4MzQxODEzMA==", // E.164 format, base64 encoded: +916283418130
   email: "dGFydW5wcmVldHNpbmdoMjY5NkBnbWFpbC5jb20=", // base64 encoded: tarunpreetsingh2696@gmail.com
-  website: "https://tarunpreetsingh.com",
+  website: "https://tarunpreet-singh-com.vercel.app/",
   jobTitle: "Software Developer",
   jobs: [
     // Add your job experiences here when you have them
   ],
   about: `
-Hello, World! I am Tarunpreet Singh — a passionate software developer from Punjab, India, dedicated to creating innovative digital solutions.
+Tarunpreet Singh builds the way he thinks — slowly, curiously, and without a map. From financial systems that speak in numbers to small bots that navigate space, his projects often begin as questions that got out of hand.
 
-I love exploring new technologies and turning creative ideas into reality through code. Currently building my portfolio of projects and always eager to learn and grow in the ever-evolving world of software development.
+He doesn’t chase trends or frameworks; he chases the why. The terminal is where his thoughts take shape — where silence feels productive and chaos finds order. Whether it’s a backend whispering logic or a network of peers sharing data across quiet connections, he creates to understand, not to impress.
 
-I enjoy problem-solving and am particularly interested in web development, creating user-friendly applications, and contributing to open-source projects.
+When he’s not building, he’s reading old words that still breathe — philosophy, simplicity, reason. He values peace more than noise, truth more than polish, and people who speak less but mean more.
 
-Let's connect and collaborate on exciting projects!
+Tarunpreet believes every mind writes its own syntax —
+and while life stays open, the paths we commit to give it meaning. \n
+His just happens to be written in curiosity and code.
   `,
   avatar: "https://github.com/GodXSpell.png", // Using GitHub avatar as placeholder
   ogImage: "https://tarunpreetsingh.com/og-image.png", // You'll need to add your own OG image

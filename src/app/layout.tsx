@@ -47,11 +47,11 @@ export const metadata: Metadata = {
   keywords: SITE_INFO.keywords,
   authors: [
     {
-      name: "ncdai",
+      name: "GodXSpell",
       url: SITE_INFO.url,
     },
   ],
-  creator: "ncdai",
+  creator: "GodXSpell",
   openGraph: {
     siteName: SITE_INFO.name,
     url: "/",
@@ -77,11 +77,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "https://assets.chanhdai.com/images/favicon.ico",
+        url: "https://godxspell.github.io/favicons/TS_mark.png",
         sizes: "any",
       },
       {
-        url: "https://assets.chanhdai.com/images/favicon.svg",
+        url: "https://godxspell.github.io/favicons/TS_white_mark.svg",
         type: "image/svg+xml",
       },
     ],

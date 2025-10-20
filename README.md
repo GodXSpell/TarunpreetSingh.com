@@ -2,7 +2,7 @@
 
 A minimal portfolio and blog to showcase my work as a Software Developer and Data Scientist.
 
-Check out the live site: [tarunpreetsingh.com](https://tarunpreetsingh.com)
+Check out the live site: [tarunpreetsingh.com](https://tarunpreet-singh-com.vercel.app/)
 
 <!-- <a href="https://frogdr.com/chanhdai.com?via=ncdai&utm_source=chanhdai.com">
   <picture>
