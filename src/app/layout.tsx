@@ -112,17 +112,24 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script
-          type="text/javascript"
+        <Script
+          id="theme-script"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}
         />
         {/*
-          Thanks @tailwindcss. We inject the script via the `<Script/>` tag again,
+          Thanks @tailwindcss. We inject the script via the `<script/>` tag again,
           since we found the regular `<script>` tag to not execute when rendering a not-found page.
          */}
-        <Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
-        <script
+        <Script
+          id="theme-script-base64"
+          strategy="beforeInteractive"
+          src={`data:text/javascript;base64,${btoa(darkModeScript)}`}
+        />
+        <Script
+          id="json-ld-website"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
           }}

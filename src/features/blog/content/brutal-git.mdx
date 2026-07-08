@@ -1,0 +1,116 @@
+---
+title: "brutal_git (StackMatch): A GitHub Repository Recommendation Engine"
+description: "Building brutal_git, a powerful GitHub repository recommendation engine powered by hybrid BM25 and semantic vector search with a two-tower neural retrieval model."
+image: /images/blog/brutal-git.png
+category: projects
+
+createdAt: 2026-01-25
+updatedAt: 2026-07-09
+---
+
+## Introduction
+
+Welcome to **brutal_git** (also known as StackMatch)!
+
+_A quick note on the name: "brutal_git" is purely for fun. I was bored and thought it went incredibly well with the project's design aesthetic and the sheer amount of brute-force methods I originally intended to use while building it._
+
+At its core, brutal_git is a highly capable GitHub repository recommendation engine powered by hybrid BM25 and semantic vector search with a two-tower neural retrieval model.
+
+### What It Does
+
+1. **Connect GitHub** → Log in via OAuth and fetch your repositories.
+2. **Analyze Stack** → Automatically detect the programming languages, frameworks, and domains from your code.
+3. **Generate Embedding** → A PyTorch two-tower model maps your technical stack to a 128-dimensional vector.
+4. **Hybrid Search** → Combines BM25 (Elasticsearch) and ANN (pgvector) using Reciprocal Rank Fusion.
+5. **Personalized Feed** → Provides feature-based re-ranking with human-readable explanations.
+6. **Online Learning** → Real-time feedback nudges your user embedding continuously.
+
+---
+
+## Technical Architecture
+
+The system is built on a scalable microservices architecture powered by Kafka.
+
+```text
+┌──────────────┐     ┌─────────────────┐     ┌──────────────────┐
+│   Next.js    │────▶│   API Gateway   │────▶│  User Profile    │
+│   Frontend   │     │  (Spring Cloud) │     │  Service (Java)  │
+└──────────────┘     └─────────────────┘     └──────────────────┘
+                            │                         │
+                            ▼                         ▼
+                     ┌──────────────┐         ┌──────────────┐
+                     │  Rec Engine  │         │    Kafka     │
+                     │  (FastAPI)   │         │   Backbone   │
+                     └──────────────┘         └──────────────┘
+                       │         │                    │
+                       ▼         ▼                    ▼
+                ┌──────────┐ ┌────────┐      ┌──────────────┐
+                │   ES     │ │pgvector│      │  Feedback    │
+                │  (BM25)  │ │ (ANN)  │      │  Service     │
+                └──────────┘ └────────┘      └──────────────┘
+```
+
+### The Tech Stack
+
+| Layer                | Technology                                   |
+| -------------------- | -------------------------------------------- |
+| **Frontend**         | Next.js 15, React 19, Framer Motion          |
+| **API Gateway**      | Spring Cloud Gateway                         |
+| **User Service**     | Spring Boot 3.2, JPA, OAuth2, JWT            |
+| **Feedback Service** | Spring Boot 3.2, Kafka Producer              |
+| **Rec Engine**       | FastAPI, hybrid BM25+ANN retrieval           |
+| **ML Model**         | PyTorch Two-Tower (128-dim embeddings)       |
+| **Ingestion**        | Python async crawler + sentence-transformers |
+| **Search**           | Elasticsearch 8.12 (BM25) + pgvector (ANN)   |
+| **Database**         | PostgreSQL 16 + pgvector extension           |
+| **Cache**            | Redis 7                                      |
+| **Events**           | Apache Kafka (Confluent)                     |
+| **Observability**    | OpenTelemetry → Jaeger, Prometheus → Grafana |
+| **Deployment**       | Docker Compose (17 containers)               |
+
+---
+
+## Architecture Decisions
+
+Building brutal_git involved making several critical architectural tradeoffs. Here is a look at the "why" behind the stack:
+
+### Why Kafka over direct REST calls?
+
+- **Decoupling**: The feedback service doesn't need the recommendation engine to be online to accept user signals.
+- **Replayability**: If the embedding logic changes, we can simply reprocess all historical feedback.
+- **Audit Logging**: Provides a natural, immutable audit log for all user interactions.
+
+### Why Reciprocal Rank Fusion over learned weights?
+
+- Requires absolutely **no labeled training data** for the fusion step.
+- It is provably optimal in expectation (Cormack et al., 2009).
+- Simple, highly interpretable, and battle-tested in production environments.
+
+### Why pgvector over Qdrant/Pinecone?
+
+- **Single Infrastructure**: Avoids adding another separate operational database component to manage.
+- **Memory Efficiency**: 500K repos × 128-dim vectors = ~256MB, which trivially fits in memory.
+- **Speed**: The IVFFLAT index provides sub-millisecond ANN search at this scale.
+
+### Why online learning on only the user embedding?
+
+- Full model retraining requires GPUs and takes hours.
+- Nudging the user embedding is a blazing fast **O(1)** operation per feedback signal.
+- Personalization happens dynamically at query time, not training time.
+
+### Why Two-Tower over Collaborative Filtering?
+
+- CF requires a dense user-item interaction matrix, which is notoriously sparse for new users.
+- The Two-Tower approach works strictly from content features, completely eliminating the cold-start problem.
+- **Separable towers**: Item embeddings are pre-computed offline, leaving only the lightweight user tower to compute at query time.
+
+---
+
+## Cold Start Strategy
+
+To handle brand new users seamlessly:
+
+1. Use the raw initial stack analysis as the base embedding.
+2. Average the embeddings of the user's top-starred repositories.
+3. Fall back to simple popularity + language filtering if needed.
+4. Once the user provides at least 5 feedback signals, the system kicks off online learning.

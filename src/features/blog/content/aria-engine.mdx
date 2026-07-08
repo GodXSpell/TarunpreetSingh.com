@@ -1,0 +1,109 @@
+---
+title: "ARIA Engine: Foundational AI Infrastructure for Autonomous Intelligence"
+description: "Exploring the development of ARIA Engine, a robust platform layer providing LLM routing, embeddings, memory, and retrieval infrastructure with a cleanly separated Java and Python architecture."
+image: /images/blog/aria-engine.png
+category: projects
+
+createdAt: 2026-06-08
+updatedAt: 2026-07-08
+---
+
+## Introduction
+
+Welcome to the **ARIA Engine** — the foundational AI infrastructure for ARIA (Autonomous Reasoning & Intelligence Architecture).
+
+It is important to clarify what this project is _not_: it is not an agent, not a product, and not user-facing. Instead, this repository contains **Phase 1** of the architecture—the engine itself. It acts as the platform layer that Phase 2's agent system will be built on top of. Nothing in this engine makes decisions or takes autonomous action. Its sole purpose is to provide robust infrastructure for:
+
+- LLM routing
+- Embeddings
+- Memory management
+- Retrieval operations
+
+All of these are safely gated behind authentication, rate limiting, and circuit breaking.
+
+---
+
+## The Architecture: A Tale of Two Services
+
+The architecture is cleanly separated into two distinct services based on responsibility:
+
+```text
+┌─────────────────────────────────────────────┐
+│         Java Spring Boot Gateway            │
+│         (external-facing, :8080)            │
+│                                             │
+│  • API key authentication                   │
+│  • Rate limiting                            │
+│  • Circuit breaking + fallbacks             │
+│  • Request routing to Python core           │
+│  • Metrics (Prometheus) + health checks     │
+└───────────────────┬─────────────────────────┘
+                    │ Docker-internal network only
+                    ▼
+┌─────────────────────────────────────────────┐
+│         Python FastAPI ML Core              │
+│         (internal-only, :8000)              │
+│                                             │
+│  • LLM provider routing + failover          │
+│  • Embeddings (sentence-transformers)       │
+│  • RAG pipeline                             │
+│  • Four-layer memory system                 │
+└───────────────────┬─────────────────────────┘
+                    │
+       ┌────────────┼────────────┐
+       ▼            ▼            ▼
+   ┌───────┐   ┌──────────┐  ┌──────────┐
+   │ Redis │   │ Postgres │  │ ChromaDB │
+   │  (L0) │   │ (L1, L3) │  │   (L2)   │
+   └───────┘   └──────────┘  └──────────┘
+```
+
+### Why Two Services?
+
+**Java** owns everything external-facing—authentication, rate limits, and resilience.
+**Python** owns everything ML-specific and is _never_ exposed outside the Docker network.
+
+This strict separation means the ML core can be swapped, scaled, or completely rewritten without ever touching the security or API surface, and vice versa. It provides peace of mind and maximum flexibility.
+
+---
+
+## Core Design Principles
+
+Building foundational infrastructure requires strict guiding principles. Here is what drove the design of the ARIA Engine:
+
+- **Zero cost**: Built exclusively on free-tier LLM APIs and local models. There is no paid inference at the engine layer.
+- **Internal-only ML core**: Python is never exposed outside the Docker network; Java remains the sole external API surface.
+- **Graceful degradation**: Every failure path returns a clean, typed response. A caller will never see a raw stack trace.
+- **No secrets in git**: Strict environment variable management ensures that if a key is ever leaked, it can be rotated immediately without purging git history.
+
+---
+
+## Resilience & API Strategy
+
+Every call from the Java gateway to the Python core is carefully wrapped in:
+
+- **Circuit breaker** (Resilience4j): After repeated failures, this trips open and returns a graceful fallback response instead of propagating raw exceptions.
+- **Rate limiter**: Applied specifically on LLM endpoints, since inference calls are the most expensive resource.
+
+Even if the Python core goes down, LLM, embedding, and memory endpoints still return a `200 OK` with a clear `error` field in the JSON body, rather than crashing or timing out.
+
+### JSON Casing Convention
+
+To make the two languages communicate seamlessly:
+
+- Java's Jackson expects and produces `camelCase` field names (e.g., `providerUsed`, `finishReason`).
+- Python's idiomatic style is `snake_case` (e.g., `provider_used`, `finish_reason`).
+
+To solve this, every Pydantic response schema in the Python ML core uses an alias generator to convert to `camelCase` for the JSON wire format. Internally, Python code still uses `snake_case` attribute access.
+
+---
+
+## Current Status and Looking Ahead
+
+The **Java gateway** is feature-complete for the Phase 1 scope. Auth, configuration, circuit breaking, exception handling, and service/controller pairs (for LLM, embeddings, and memory) are built and verified end-to-end.
+
+The **Python ML core** has its LLM path fully built and verified end-to-end. The `ModelRouter` features Groq as the primary provider with an Ollama local fallback. Real completions flow seamlessly through the full chain: from a curl request, through Java auth and circuit breaker, to the Python router, out to the Groq API, and all the way back mapped cleanly.
+
+Features like the RAG pipeline are intentionally deferred on both sides until the Python retrieval pipeline (backed by ChromaDB) is fully fleshed out.
+
+Phase 1 lays the bedrock. With a robust, resilient engine in place, the stage is set for building the autonomous agent ecosystem in Phase 2.

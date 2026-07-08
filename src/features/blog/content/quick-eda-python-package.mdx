@@ -1,0 +1,151 @@
+---
+title: "Introducing quick_eda: The No-Nonsense Python Data Profiler"
+description: "Most EDA tools give you a 50-page HTML report nobody reads. quick_eda gives you what you actually need—in seconds, right in your notebook."
+image: /images/blog/quick-eda-cover.png
+category: projects
+
+createdAt: 2026-04-10
+updatedAt: 2026-04-10
+---
+
+## Introduction: Why quick_eda (AutoEDA)?
+
+If you've ever worked with tabular data in Python, you know the drill. You load a pandas DataFrame, and then you either spend 15 minutes writing `.describe()`, `.info()`, `.isnull().sum()`, and plotting histograms by hand—or you use an automated EDA tool that generates a massive, sluggish 50-page HTML report that you barely skim.
+
+I wanted something better. I wanted a fast, focused tool that gives actionable insights instantly, directly inside the Jupyter Notebook or terminal where I'm actually working.
+
+That's why I built **quick_eda** (hosted in the AutoEDA repository). It's a lightweight, no-nonsense Python package for Exploratory Data Analysis.
+
+### Quick Links
+
+- 📦 **PyPI Package**: `pip install quick-eda`
+- 💻 **GitHub Repository**: [GodXSpell/AutoEDA](https://github.com/GodXSpell/AutoEDA)
+
+---
+
+## What's Inside?
+
+1. [The Philosophy: TL;DR For Your Dataset](#the-philosophy-tldr-for-your-dataset)
+2. [What It Detects](#what-it-detects)
+3. [How to Use It](#how-to-use-it)
+4. [CI/CD Integration](#cicd-integration)
+5. [The Tech Behind It](#the-tech-behind-it)
+
+---
+
+## The Philosophy: TL;DR For Your Dataset
+
+The core philosophy of `quick_eda` is speed and actionability. It doesn't just tell you that your data is skewed; it suggests what to do about it.
+
+When you run `quick_eda(df)`, you instantly get a highly readable terminal/notebook output:
+
+```text
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  quick_eda  •  10,843 rows •  12 cols  •  3.2 MB
+  4.1% missing  •  23 duplicates
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠  WARNINGS
+   user_id     — looks like a unique identifier
+   status      — near-constant (96.2% = "active")
+   income      — 11.4% missing, skew 2.8
+
+💡 SUGGESTIONS
+   1. Drop user_id      — unique identifier, no predictive value
+   2. Drop status       — near-constant, low variance
+   3. Impute income     — median recommended (11.4% missing)
+   4. Log-transform income — skew 2.8 exceeds threshold
+```
+
+Followed immediately by clean, well-rendered plots (Distributions, Outliers, Correlation Heatmaps) if you're in full mode.
+
+---
+
+## What It Detects
+
+The internal suggestion engine automatically spots common data quality issues that trip up machine learning models:
+
+- **High Missingness**: Recommends dropping columns with >50% nulls or imputing those with fewer.
+- **Constant / Near-Constant Columns**: Flags features with almost no variance.
+- **Data Leakage / ID Columns**: Warns against columns where nearly every row is unique.
+- **High Skew & Outliers**: Detects highly skewed numeric columns (`abs(skew) > 1.0`) and flags extreme outliers using the IQR method.
+- **High Cardinality**: Categorical columns with too many unique values are flagged for grouping.
+- **High Correlation / Multicollinearity**: Detects when two features share `abs(r) ≥ 0.85` so you can drop one.
+
+---
+
+## How to Use It
+
+Installation is as simple as:
+
+```bash
+pip install quick-eda
+```
+
+### The One-Liner
+
+```python
+import quick_eda
+
+# The default mode auto-samples large datasets to keep things fast
+quick_eda(df)
+```
+
+### Targeted Analysis
+
+If you're building a model, tell the profiler what you're trying to predict. It will rank correlations against your target and make model-aware suggestions:
+
+```python
+quick_eda(df, target="price")
+```
+
+### The TL;DR Mode
+
+If you're using a terminal or don't want the visual clutter of matplotlib/seaborn plots, run the instant text-only mode:
+
+```python
+quick_eda(df, mode="tldr")
+```
+
+---
+
+## CI/CD Integration
+
+`quick_eda` isn't just for notebooks. It exposes a `return_report=True` parameter that returns a machine-readable Python dictionary containing all statistics, shapes, memory usage, and suggestions.
+
+This makes it perfect for **data quality gates** in your pipeline (e.g., GitHub Actions, Airflow):
+
+```python
+# data_quality_check.py
+import pandas as pd
+import quick_eda
+import sys
+
+df = pd.read_csv("data/latest.csv")
+report = quick_eda(df, mode="tldr", return_report=True)
+
+if report["missing_pct"] > 20:
+    print(f"FAIL: {report['missing_pct']}% missing values exceed threshold")
+    sys.exit(1)
+
+print("Data quality check passed.")
+```
+
+---
+
+## The Tech Behind It
+
+The package is built strictly on the modern Python data stack (`pandas`, `numpy`, `matplotlib`, `seaborn`) to ensure zero esoteric dependencies.
+
+Architecturally, the project is strictly decoupled into distinct modules:
+
+- `classifier.py` for dynamic column type inference.
+- `profiler.py` for numeric and categorical statistics.
+- `suggestions.py` for the rule-based engine that maps detected issues to actionable fixes.
+- `renderer.py` / `plots.py` for the beautiful notebook & terminal UI.
+
+### Try It Out!
+
+If you're tired of waiting 3 minutes for an HTML report just to find out a column is entirely `NaN`, give `quick_eda` a shot.
+
+**[Check out the source code and contribute on GitHub!](https://github.com/GodXSpell/AutoEDA)**

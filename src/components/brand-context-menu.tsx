@@ -3,6 +3,7 @@
 import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 import { copyText } from "@/utils/copy";
@@ -18,6 +19,15 @@ import {
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <>{children}</>;
+  }
 
   return (
     <ContextMenu>

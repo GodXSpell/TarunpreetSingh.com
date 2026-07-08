@@ -15,6 +15,9 @@ const compat = new FlatCompat({
  * @type {import("eslint").Linter.Config}
  * */
 const eslintConfig = [
+  {
+    ignores: [".next/**", "node_modules/**", "src/__registry__/**", "public/r/**", "dist/**", "build/**"],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
   {
     files: ["**/*.{ts,tsx}"],

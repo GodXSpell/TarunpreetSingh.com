@@ -2,13 +2,13 @@ import type { SocialLink } from "../types/social-links";
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/github.webp",
+    icon: "/images/social/github.svg",
     title: "GitHub",
     description: "GodXSpell",
     href: "https://github.com/GodXSpell",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/linkedin.webp",
+    icon: "/images/social/linkedin.png",
     title: "LinkedIn",
     description: "Tarunpreet Singh",
     href: "https://www.linkedin.com/in/tarunpreet-singh-77b12b333/",
