@@ -15,29 +15,22 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
       href={href}
       target="_blank"
       rel="noopener"
+      aria-label={`Visit my ${title}`}
     >
-      {/* <div className="relative size-12 shrink-0">
+      <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-zinc-100 ring-1 ring-black/5 transition-colors ring-inset group-hover/link:bg-zinc-200 dark:bg-zinc-800 dark:ring-white/5 dark:group-hover/link:bg-zinc-700">
         <Image
-          className="rounded-xl"
+          className={cn(
+            "object-contain",
+            title === "GitHub" && "dark:invert" // Automatically invert GitHub icon in dark mode
+          )}
           src={icon}
           alt={title}
-          width={48}
-          height={48}
+          width={32}
+          height={32}
           quality={100}
           unoptimized
         />
-        <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/8 ring-inset dark:ring-white/8" />
-      </div> */}
-
-      <Image
-        className="shrink-0"
-        src={icon}
-        alt={title}
-        width={48}
-        height={48}
-        quality={100}
-        unoptimized
-      />
+      </div>
 
       <div className="flex-1">
         <h3 className="flex items-center font-medium underline-offset-4 group-hover/link:underline">

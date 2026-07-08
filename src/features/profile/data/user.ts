@@ -34,7 +34,7 @@ Tarunpreet believes every mind writes its own syntax —
 and while life stays open, the paths we commit to give it meaning. \n
 His just happens to be written in curiosity and code.
   `,
-  avatar: "https://github.com/GodXSpell.png", // Using GitHub avatar as placeholder
+  avatar: "https://github.com/GodXSpell.png", // Github avatar
   ogImage: "https://tarunpreetsingh.com/og-image.png", // You'll need to add your own OG image
   namePronunciationUrl: "", // Add your name pronunciation audio if you want
   keywords: [

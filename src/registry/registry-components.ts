@@ -75,7 +75,11 @@ export const components: Registry["items"] = [
     author: "GodXSpell <tarunpreet@tarunpreetsingh.com>",
     dependencies: ["react-markdown", "lucide-react"],
     devDependencies: ["@tailwindcss/typography"],
-    registryDependencies: ["@tarunpreetsingh/utils", "collapsible", "separator"],
+    registryDependencies: [
+      "@tarunpreetsingh/utils",
+      "collapsible",
+      "separator",
+    ],
     files: [
       {
         path: "work-experience/work-experience.tsx",

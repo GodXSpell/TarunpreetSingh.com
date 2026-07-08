@@ -22,7 +22,7 @@ export default function Page() {
       id: "download",
       title: "Download PDF",
       description: "Get the latest version of my resume in PDF format",
-      href: "https://drive.google.com/uc?export=download&id=1QwTCJSI709YPVUH9W0VcvLQuWAmAS8ww",
+      href: "https://drive.google.com/uc?export=download&id=1jGse8wgEeJ089EwtQDs9LHN1jmSN47oA",
       icon: DownloadIcon,
       download: true,
       primary: true,
@@ -31,7 +31,7 @@ export default function Page() {
       id: "view",
       title: "View Online",
       description: "View my resume directly in your browser",
-      href: "https://drive.google.com/file/d/1QwTCJSI709YPVUH9W0VcvLQuWAmAS8ww/view?usp=sharing",
+      href: "https://drive.google.com/file/d/1jGse8wgEeJ089EwtQDs9LHN1jmSN47oA/view?usp=sharing",
       icon: ExternalLinkIcon,
       target: "_blank",
       primary: false,
@@ -120,7 +120,7 @@ export default function Page() {
         </div>
         <div className="mx-auto w-full max-w-4xl">
           <iframe
-            src="https://drive.google.com/file/d/1QwTCJSI709YPVUH9W0VcvLQuWAmAS8ww/preview"
+            src="https://drive.google.com/file/d/1jGse8wgEeJ089EwtQDs9LHN1jmSN47oA/preview"
             className="h-[600] w-full rounded-lg border border-edge bg-white"
             title="Resume Preview"
             allow="autoplay"

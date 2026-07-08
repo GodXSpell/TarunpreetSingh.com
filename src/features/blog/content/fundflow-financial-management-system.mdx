@@ -1,0 +1,116 @@
+---
+title: "Building FundFlow: A Modern Personal Finance Management Application"
+description: "A deep dive into creating a digital sanctuary for your capital. FundFlow is a full-stack financial application featuring a Next.js 15 frontend and a robust Spring Boot 3 backend."
+image: /images/blog/BudgetsPage.png
+category: projects
+
+createdAt: 2025-09-29
+updatedAt: 2026-04-10
+---
+
+## Introduction: Why FundFlow?
+
+Personal finance shouldn’t feel like tracking spreadsheets in a sterile, clunky interface. It should feel empowering. I built **FundFlow** to be a _digital sanctuary for your capital_—a modern, high-end financial management application that brings together blazing-fast user experiences, beautiful typography, motion, and a deeply secure data layer.
+
+Imagine hitting `Cmd+K` to fly through your budgets, instantly hot-swapping application fonts to match your vibe, and viewing your legacy wealth grow on an intentionally focused, minimalist dashboard. That's the FundFlow experience. If you’re a power user or developer who appreciates elite UI craftsmanship married with a robust backend architecture, you're going to love this.
+
+### Quick Links
+
+- 🌍 **Live Demo**: [https://fundflow-two.vercel.app/](https://fundflow-two.vercel.app/)
+- 💻 **Frontend Repository**: [GitHub - FundFlow_Remastered](https://github.com/GodXSpell/FundFlow_Remastered/)
+- ⚙️ **Backend Repository**: [GitHub - FundflowBackend](https://github.com/GodXSpell/FundflowBackend)
+
+---
+
+## What's Inside?
+
+1. [Introduction: Why FundFlow?](#introduction-why-fundflow)
+2. [Standout User Features](#standout-user-features)
+3. [Frontend Architecture: Next.js & React 19](#frontend-nextjs--react-19)
+4. [Backend Infrastructure: Spring Boot & Java 17](#backend-spring-boot--java-17)
+5. [Docker Containerization](#docker-containerization)
+
+---
+
+## Standout User Features
+
+- **Keyboard-First Command Menu**: Ditch the mouse. A globally accessible `Cmd+K` menu puts navigation and global theming commands directly at your fingertips.
+- **Universal Typographic Hot-Swapping**: Organically sync your reading experience using Jotai. Switch between native developer fonts (`JetBrains Mono`), modern standard sans (`Inter`), and reliable system fallbacks instantly.
+- **Minimalist Dashboard Intelligence**: Eliminate noise. FundFlow gives you a profoundly intentional interface that tracks only what matters—your expenses, incoming cash flow, budgets, and overall wealth accumulation.
+- **Fluid Motion UI**: Leveraging Framer Motion and native CSS, interactions ripple naturally across the application, providing immediate semantic feedback.
+- **Complete Financial Control**: Whether it’s managing multiple bank accounts, complex categorized budgeting, or comprehensive transaction breakdowns, every number is beautifully visualized and securely logged.
+
+## Frontend: Next.js & React 19
+
+The frontend is engineered utilizing a highly scalable architecture, focusing on a deeply intentional and minimalist user experience.
+
+### Tech Stack
+
+- **Framework**: Next.js 15 (App Router) + React 19
+- **Styling**: Tailwind CSS v4, shadcn/ui, Radix UI primitives
+- **State Management**: Jotai (Atomic state mapping)
+- **Fluid UI**: Motion (Framer), native CSS styling
+- **Language**: TypeScript
+
+### Key Features
+
+- **Dashboard Intelligence**: A minimalist overview tracking expenses and wealth.
+- **Dynamic Context Engines (Cmd+K)**: Fast, keyboard-first command menu for fluid navigation and instant thematic swapping.
+- **Universal Typographic Switching**: Hot-swap between native developer fonts (`JetBrains Mono`), standard sans (`Inter`), and system fallbacks.
+- **Architectural Scalability**: Strict modular separation for cohesive feature blocks like budgets, analytics, and wallets.
+
+## Backend: Spring Boot & Java 17
+
+The backend represents the core engine of FundFlow, providing a secure RESTful API designed to reliably process, store, and analyze financial data.
+
+### Tech Stack
+
+- **Core**: Java 17, Spring Boot 3.x (Web, Validation)
+- **Security**: Spring Security & JWT (io.jsonwebtoken)
+- **Data Persistence**: Spring Data JPA / Hibernate mapped to MySQL/PostgreSQL
+- **Build & Deployment**: Maven and Docker
+
+### Key Features
+
+- **User Security & Authentication**: Complete registration and login flows secured via stateless JWTs.
+- **Bank Account Management**: Add and monitor multiple accounts (Checking, Savings, Credit) with real-time balances.
+- **Budget Tracking**: Configure periodic budget limits across various categories.
+- **Transaction Logging & Analytics**: Track debits and credits, filter by range and category, and generate insights.
+
+### API Architecture
+
+The application implements a clean controller-service-repository design pattern. Standard endpoints handle operations like user authentication, account management, budget configurations, and robust paginated transaction queries.
+
+```java
+// Example: Secure JWT-based backend endpoint structure
+@RestController
+@RequestMapping("/api/transactions")
+public class TransactionController {
+
+    @Autowired
+    private TransactionService transactionService;
+
+    @PostMapping
+    public ResponseEntity<Transaction> createTransaction(@RequestBody TransactionDto dto) {
+        Transaction transaction = transactionService.createTransaction(dto);
+        return ResponseEntity.ok(transaction);
+    }
+}
+```
+
+---
+
+## Docker Containerization
+
+To ensure seamless deployment matching the local environment behaviors, the API is easily containerized:
+
+```bash
+docker build -t beta-finbot .
+docker run -p 8080:8080 beta-finbot
+```
+
+### Ready to take control of your capital?
+
+By connecting the deeply intentional Next.js interface with the robust Spring Boot system, FundFlow provides an elite, scalable personal finance experience.
+
+Join the sanctuary and **[try out the Live App today!](https://fundflow-two.vercel.app/)**

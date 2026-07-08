@@ -20,6 +20,7 @@ export default function Page() {
   return (
     <>
       <script
+        id="profile-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(getPageJsonLd()).replace(/</g, "\\u003c"),
